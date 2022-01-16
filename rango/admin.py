@@ -5,7 +5,10 @@ from django.contrib import admin
 from rango.models import Category, Page
 
 # Category
-admin.site.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug':('name',)}
+
+admin.site.register(Category, CategoryAdmin)
 
 # Page
 class PageAdmin(admin.ModelAdmin):
